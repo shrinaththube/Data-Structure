@@ -5,7 +5,8 @@ package linkedlist;
  * @author Shrinath
  *
  *This class is about creating Linked List from given array. Sorting of Linked List by Bubble and Insertion.
- *Merging of sorted linked list in place and keep sorted while merging. 
+ *Merging of sorted linked list in place and keep sorted while merging.
+ *
  */
 public class LinkList {
 	public LinkListNode headNode;
