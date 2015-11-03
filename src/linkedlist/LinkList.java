@@ -17,6 +17,8 @@ public class LinkList {
 		//list1.sortLinkList_bubble();
 		//list1.sortLinkList_Insertion();
 		//list1.displayLinkList();
+		
+		//modified
 
 		list2.createLinkList(array1);
 		list2.displayLinkList();
