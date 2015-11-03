@@ -6,7 +6,7 @@ package linkedlist;
  *
  *This class is about creating Linked List from given array. Sorting of Linked List by Bubble and Insertion.
  *Merging of sorted linked list in place and keep sorted while merging.
- *
+ *  
  */
 public class LinkList {
 	public LinkListNode headNode;
@@ -14,28 +14,32 @@ public class LinkList {
 
 	public static void main(String args[]){
 
+		//Test case
 		LinkList list1 = new LinkList();
 		LinkList list2 = new LinkList();
 
 		int[] array = {3,4,5,2,8,6,9,1};
 		int[] array1 = {4,3,6,77,55,43,9,5};
 
+		//Create linked list 1 - Sort it - Display it
 		list1.createLinkList(array);
-		list1.displayLinkList();
-		//list1.sortLinkList_bubble();
-		//list1.sortLinkList_Insertion();
-		//list1.displayLinkList();
-		
-		
-		list2.createLinkList(array1);
-		list2.displayLinkList();
-		//list2.sortLinkList_bubble();
-		//list2.displayLinkList();
-		
-		list1.mergeSortedLinkList(list2);
+		System.out.print("List 1 before sorting : ");
 		list1.displayLinkList();
 		list1.sortLinkList_Insertion();
-		//list1.sortLinkList_bubble();
+		System.out.print("List 1 after sorting : ");
+		list1.displayLinkList();
+		
+		//Create linked list 2 - Sort it - Display it
+		list2.createLinkList(array1);
+		System.out.print("List 2 before sorting : ");
+		list2.displayLinkList();
+		list2.sortLinkList_bubble();
+		System.out.print("List 2 after sorting : ");
+		list2.displayLinkList();
+		
+		//Merge list 2 into list 1
+		list1.mergeSortedLinkList(list2);
+		System.out.print("List 1 after merging List 2 : ");
 		list1.displayLinkList();
 	}
 
@@ -59,7 +63,7 @@ public class LinkList {
 		}
 	}
 
-	//Add node in the given 
+	//Add node in the given linked list
 	public void addNode(int value){
 		if(this.headNode==null){
 			this.assignHead(value);
@@ -71,7 +75,7 @@ public class LinkList {
 		}
 	}
 
-	//Print the all LinkList
+	//Print the Linked list
 	public void displayLinkList(){
 		LinkListNode printNode = this.headNode;
 		while(printNode!=null){
@@ -104,9 +108,7 @@ public class LinkList {
 				first = first.nextNode;
 				second = second.nextNode;
 			}
-
 		}
-
 	}
 
 	//Insertion sorting of Link List time complexity O(n^2), space complexity 0 -> in place sorting
@@ -158,7 +160,8 @@ public class LinkList {
 			System.out.println("LinkedList is empty");
 		}
 	}
-
+	
+	//Merging of two sorted linked lists into one. 
 	public void mergeSortedLinkList( LinkList list2){
 			
 		LinkListNode ref_list1 = this.headNode;
