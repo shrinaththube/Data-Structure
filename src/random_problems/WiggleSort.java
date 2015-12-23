@@ -9,8 +9,13 @@ public class WiggleSort {
 		// TODO Auto-generated method stub
 
 		//int a[]={5,2,7,8,-2,25,25};
-		int a[]={2,3,5,11,14,15,9};
-		sort5(a);
+		int a[]={2,3,3,5,11,14,15,9};
+		int b[]={9,15,14,3,11,5,3,2};
+		sort4(a);
+		//zigZag(a);
+		System.out.println();
+		sort4(b);
+		//zigZag(b);
 
 
 	}
@@ -21,7 +26,7 @@ public class WiggleSort {
 	 * Best soluiont O(n) and inplace 
 	 * @param arr
 	 */
-	void zigZag(int arr[])
+	public static void zigZag(int arr[])
 	{
 		int n= arr.length;
 		// Flag true indicates relation ">" is expected,
@@ -55,6 +60,10 @@ public class WiggleSort {
 			}
 			flag = !flag; /* flip flag */
 		}
+		
+		for(int x=0; x<arr.length; x++)
+			System.out.print(" "+arr[x]);
+		
 	}
 
 
