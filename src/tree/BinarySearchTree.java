@@ -99,6 +99,7 @@ public class BinarySearchTree {
 		System.out.println();
 		System.out.print("Tree print in Postorder = ");
 		this.printPostorder(this.root);
+		System.out.println();
 	}
 	
 	// Create tree from fixed size of data set. This is not balanced tree 
