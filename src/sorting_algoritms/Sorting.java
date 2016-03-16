@@ -21,21 +21,29 @@ public class Sorting {
 		Sorting obj = new Sorting();
 		
 		int array[] = obj.readFile();
+		int arrayForInsertionSort [] = obj.readFile(); 
 		
-		//Unsorted array
+		//Unsorted array - sort it by bubble sorting
 		long startTime = System.nanoTime();
 		obj.modified_Bubble_sort(array);
 		long endTime = System.nanoTime();
 		long duration = endTime - startTime;
 		obj.printArray(array,duration);
 		
-		//Sorted array
+		//Sorted array to check modified bubble condition and compare the time requirement.
 		startTime = System.nanoTime();
 		obj.modified_Bubble_sort(array);
 		endTime = System.nanoTime();
 		duration = endTime - startTime;
 		obj.printArray(array,duration);
+				
 		
+		//Unsorted array - sort it by Insertion sorting
+		startTime = System.nanoTime();
+		obj.insertionSort(arrayForInsertionSort);
+		endTime = System.nanoTime();
+		duration = endTime - startTime;
+		obj.printArray(arrayForInsertionSort,duration);
 	}
 	
 	public void modified_Bubble_sort(int [] array){
@@ -53,6 +61,37 @@ public class Sorting {
 			if(flag){ break; }
 		}
 	}
+	
+
+	/***
+	 * Insertion Sorting - insert element at appropriate position.
+	 * @param array it is given by user
+	 * @param i loop variable starts from 1 not from 0 up to length of array. It picks the element which we want to insert in left part of array. 
+	 * @param element It keep the value of element that we want to sort
+	 * @param position It maintains the index where element should be insert.
+	 * @param j inner loop variable starts from i-1 and scan backward up to 0'th position.
+	 * 
+	 */
+	public void insertionSort(int array[])
+	{
+		for(int i=1;i<array.length; i++){
+			int element = array[i];
+			int position = i;  
+			
+			for(int j=i-1;j>-1;j--){
+				if(array[j]< element){
+					break;
+				}
+				else{
+					array[j+1] = array[j];
+					position = j;
+				}
+			}
+			
+			array[position] = element;
+		}
+	}
+	
 	
 	public void printArray(int[] array,long execution_time){
 		System.out.print("Array = ");
@@ -104,10 +143,7 @@ public class Sorting {
 		            // Or we could just do this: 
 		            // ex.printStackTrace();
 		        }
-		        
-		        
 		        return array;
-		    
 	}
 	
 }
