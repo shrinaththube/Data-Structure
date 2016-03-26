@@ -10,6 +10,10 @@ import javax.swing.JSpinner.ListEditor;
  *         place and keep sorted while merging.
  * 
  */
+/**
+ * @author Shrinath
+ *
+ */
 public class LinkList {
 	public LinkListNode headNode;
 	public LinkListNode prevNode;
@@ -19,10 +23,11 @@ public class LinkList {
 		// Test case
 		LinkList list1 = new LinkList();
 		LinkList list2 = new LinkList();
-
+		LinkList list3 = new LinkList();
 		int[] array = { 3, 4, 5, 2, 8, 6, 9, 1 };
 		int[] array1 = { 4, 3, 6, 77, 55, 43, 9, 5 };
-
+		int[] array2 = { 1, 2, 3, 4, 5 };
+		
 		// Create linked list 1 - Sort it - Display it
 		list1.createLinkList(array);
 		System.out.print("List 1 before sorting : ");
@@ -46,6 +51,13 @@ public class LinkList {
 		list1.mergeSortedLinkList(list2);
 		System.out.print("List 1 after merging List 2 : ");
 		list1.displayLinkList();
+		
+		list3.createLinkList(array2);
+		System.out.println("list 1 before group reverse: ");
+		list3.displayLinkList();
+		list3.reverseLLInGroup(list3.headNode, 2);
+		list3.displayLinkList();
+		
 	}
 
 	// Creating LinkList from given array
@@ -303,4 +315,51 @@ public class LinkList {
 		return currPointer;
 	}
 
+	/***
+	 * This is solution of LeetCode problem of "25. Reverse Nodes in k-Group"
+	 * 
+	 * Caller will provide head node  and number of node in group.
+	 * 
+	 * @param head head of linked list
+	 * @param numberOfNodes how many nodes are in group that should be reverse
+	 */
+ public void reverseLLInGroup(LinkListNode head, int numberOfNodes) {
+
+		if (head == null) {
+			System.out.println("Linked list is empty");
+			return;
+		}
+
+		LinkListNode prePointer = null;
+		LinkListNode preHead = head;
+		LinkListNode preTail = head;
+		LinkListNode nextHead = head;
+		boolean globalFlag = true;
+		while (nextHead != null && nextHead.nextNode != null) {
+			int count = 0;
+			while (count < numberOfNodes - 1 && nextHead.nextNode != null) {
+				nextHead = nextHead.nextNode;
+				count++;
+			}
+			if (count + 1 != numberOfNodes) {
+				break;
+			}
+			prePointer = nextHead;
+			nextHead = nextHead.nextNode;
+			prePointer.nextNode = null;
+			preHead = reverse(preHead);
+			if (globalFlag) {
+				this.headNode = preHead;
+				globalFlag = false;
+			} else {
+				preTail.nextNode = preHead;
+			}
+			while (preHead.nextNode != null) {
+				preHead = preHead.nextNode;
+			}
+			preTail = preHead;
+			preHead.nextNode = nextHead;
+			preHead = nextHead;
+		}
+	}
 }
