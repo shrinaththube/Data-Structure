@@ -24,6 +24,7 @@ public class Sorting {
 		int arrayForInsertionSort [] = obj.readFile(); 
 	//	int arrayForMergeSort [] = obj.readFile();
 		int arrayForMergeSort [] = {9,4,2,1,5};
+		int arrayForQuickSort [] = {9,4,2,1,5};
 		int output[] = new int[arrayForMergeSort.length];
 		
 		
@@ -49,14 +50,22 @@ public class Sorting {
 		duration = endTime - startTime;
 		obj.printArray(arrayForInsertionSort,duration);
 		*/
-		//Unsorted array - sort it by Insertion sorting
+		//Unsorted array - sort it by Merge sorting
 		startTime = System.nanoTime();
 		//obj.mergeSort(arrayForMergeSort,output,0,output.length-1);
 		obj.mergeSort(arrayForMergeSort);
 		endTime = System.nanoTime();
 		duration = endTime - startTime;
 		obj.printArray(arrayForMergeSort,duration);
+		
+		//Unsorted array - sort it by Merge sorting
+		startTime = System.nanoTime();
+		obj.quickSort(arrayForQuickSort,0,arrayForQuickSort.length-1);
+		endTime = System.nanoTime();
+		duration = endTime - startTime;
+		obj.printArray(arrayForMergeSort,duration);
 	}
+	
 	
 	public void modified_Bubble_sort(int [] array){
 		//Flag will check is their any swapping in first iteration of bubble sort
@@ -73,6 +82,10 @@ public class Sorting {
 			if(flag){ break; }
 		}
 	}
+	
+	
+	
+	
 	
 	/***
 	 * ******************************* Merge Sort ***************************************
@@ -134,7 +147,44 @@ public class Sorting {
 		}
 	}
 	
+	/***
+	 * ************* Quick Sort ****************************************
+	 * Divide the array in two part on pivotal postion
+	 * @param array that want to sort
+	 * @param low lower index of array
+	 * @param high higher index of array
+	 */
+	public void quickSort(int array[],int low , int high)
+	{
+		int partIndex;
+		if(low>high)
+			return;
+		partIndex = partition(array, low, high);
+		quickSort(array,low, partIndex -1 );
+		quickSort(array,partIndex+1, high);
+		
+	}
 	
+	public int partition(int[] array,int low,int high){
+		int pivot = array[0];
+		int i=low,j=high;
+		while(i<j)
+		{
+			while(array[i]<pivot)
+				i++;
+			while(array[j]>pivot)
+				j--;
+			if(i<j)
+			{
+				int temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+			}
+		}
+		array[low] = array[j];
+		array[j] = pivot;
+		return j;
+	}
 	
 	/***
 	 * Insertion Sorting - insert element at appropriate position.
