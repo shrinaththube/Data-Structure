@@ -22,13 +22,17 @@ public class Sorting {
 		
 		int array[] = obj.readFile();
 		int arrayForInsertionSort [] = obj.readFile(); 
+	//	int arrayForMergeSort [] = obj.readFile();
+		int arrayForMergeSort [] = {9,4,2,1,5};
+		int output[] = new int[arrayForMergeSort.length];
+		
 		
 		//Unsorted array - sort it by bubble sorting
 		long startTime = System.nanoTime();
 		obj.modified_Bubble_sort(array);
 		long endTime = System.nanoTime();
 		long duration = endTime - startTime;
-		obj.printArray(array,duration);
+	/*	obj.printArray(array,duration);
 		
 		//Sorted array to check modified bubble condition and compare the time requirement.
 		startTime = System.nanoTime();
@@ -44,6 +48,14 @@ public class Sorting {
 		endTime = System.nanoTime();
 		duration = endTime - startTime;
 		obj.printArray(arrayForInsertionSort,duration);
+		*/
+		//Unsorted array - sort it by Insertion sorting
+		startTime = System.nanoTime();
+		//obj.mergeSort(arrayForMergeSort,output,0,output.length-1);
+		obj.mergeSort(arrayForMergeSort);
+		endTime = System.nanoTime();
+		duration = endTime - startTime;
+		obj.printArray(arrayForMergeSort,duration);
 	}
 	
 	public void modified_Bubble_sort(int [] array){
@@ -62,7 +74,68 @@ public class Sorting {
 		}
 	}
 	
+	/***
+	 * ******************************* Merge Sort ***************************************
+	 * Recursive function divides array into left and right till get single element and in merge function merge it 
+	 * by comparing element value in ascending order
+	 * 
+	 * @param array that caller wants to sort
+	 */
+	public void mergeSort(int array[]){
+		int length = array.length;
+		if(length<2)
+			return;
+		int mid = length/2;
+		int[] left = new int[mid];
+		int[] right = new int[length-mid];
+		for(int i=0;i<mid;i++){
+			left[i] = array[i];
+		}
+		for(int j=mid;j<length;j++)
+		{
+			right[j-mid] = array[j];
+		}
+		mergeSort(left);
+		mergeSort(right);
+		merge(array,left,right);
+	}
 
+	public void merge(int[] array,int[] left,int[] right)
+	{
+		int lLeft = left.length;
+		int lRight = right.length;
+		int i=0,j=0,k=0;
+		while(i<lLeft && j<lRight)
+		{
+			if(left[i]<right[j])
+			{
+				array[k]=left[i];
+				i++;
+				k++;
+			}
+			else{
+				array[k]=right[j];
+				j++;
+				k++;
+			}
+		}
+		
+		while(i<lLeft)
+		{
+			array[k]=left[i];
+			i++;
+			k++;
+		}
+		while(j<lRight)
+		{
+			array[k]=right[j];
+			j++;
+			k++;
+		}
+	}
+	
+	
+	
 	/***
 	 * Insertion Sorting - insert element at appropriate position.
 	 * @param array it is given by user
@@ -92,7 +165,11 @@ public class Sorting {
 		}
 	}
 	
-	
+	/***
+	 * ****************** Display any array ******************************
+	 * @param array that caller wants to display
+	 * @param execution_time time that required to perform sorting operation
+	 */
 	public void printArray(int[] array,long execution_time){
 		System.out.print("Array = ");
 		for(int i=0;i<array.length;i++){ System.out.println(array[i]+" ");}
@@ -100,6 +177,12 @@ public class Sorting {
 		System.out.println();
 	}
 	
+	
+	/***
+	 * ****************** Reading file *********************************************
+	 * This method read the given text file and makes an array to give input to sorting function
+	 * @return returns the populated array.
+	 */
 	public int[] readFile(){
 		        // The name of the file to open.
 		        //String fileName = "C:\\Users\\Shrinath\\Desktop\\temp.txt";
