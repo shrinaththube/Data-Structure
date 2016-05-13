@@ -5,9 +5,15 @@ import javax.swing.JSpinner.ListEditor;
 /**
  * @author Shrinath
  *
- *         This class is about creating Linked List from given array. Sorting of
- *         Linked List by Bubble and Insertion. Merging of sorted linked list in
- *         place and keep sorted while merging.
+ *         This class is about 
+ *         - creating Linked List from given array.
+ *         - Display Linked List 
+ *         - Sorting of Linked List by Bubble and Insertion. 
+ *         - Merging of sorted linked list in place and keep sorted while merging.
+ *         - Reverse all linked list
+ *         - Reverse Linked List from specific position
+ *         - Reverse nodes in group in Linked List
+ *         
  * 
  */
 /**
