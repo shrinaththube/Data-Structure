@@ -73,4 +73,13 @@ public class LinkedListProblems extends LinkList {
 		return null;
 	}
 
+	public boolean isLoop(){
+		if(this.isLoop(this.headNode) != null){
+			System.out.println("Loop present in LL");
+			return true;
+		}
+		System.out.println("Loop in not present in LL");
+		return false;
+	}
+	
 }
