@@ -108,4 +108,41 @@ public class LinkedListProblems extends LinkList {
 	}
 	
 	
+	/***
+	 * This method find the starting point of loop in LL 
+	 * @param head  head of Linked list that contains loop
+	 * @return starting node of the loop
+	 */
+	public LinkListNode findLoopPoint(LinkListNode head) {
+		LinkListNode slowP;
+		LinkListNode fastP;
+		HashSet<LinkListNode> loopNodes = new HashSet<LinkListNode>();
+		if (head == null) {
+			System.out.println("Linked List in not formd yet");
+			return null;
+		}
+
+		slowP = isLoop(head);
+		fastP = slowP;
+		if (slowP == null) {
+			return slowP;
+		}
+
+		loopNodes.add(slowP);
+		slowP = slowP.nextNode;
+
+		while (!slowP.equals(fastP)) {
+			loopNodes.add(slowP);
+			slowP = slowP.nextNode;
+		}
+
+		slowP = head;
+		while (!loopNodes.contains(slowP)) {
+			slowP = slowP.nextNode;
+		}
+
+		return slowP;
+	}
+	
+	
 }
