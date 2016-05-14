@@ -82,4 +82,30 @@ public class LinkedListProblems extends LinkList {
 		return false;
 	}
 	
+	
+	/***
+	 *  This method finds number of nodes in loop
+	 * @param head head of Linked List
+	 * @return count in int, number of nodes in loop
+	 */
+	public int loopNodeCount(LinkListNode head){
+
+		if (head == null) {
+			System.out.println("Linked List in not formd yet");
+			return 0;
+		}
+
+		int count = 1;
+		LinkListNode loopP = isLoop(head);
+		LinkListNode countP = loopP.nextNode;
+		
+		while(!countP.equals(loopP)){
+			countP = countP.nextNode;
+			count++;
+		}
+		
+		return count;
+	}
+	
+	
 }
