@@ -38,5 +38,15 @@ public class LinkedListProblems extends LinkList {
 		tailPointer.nextNode = posPointer;
 	}
 
-	
+	/***
+	 * This method is method overriding. If user don't have any specific
+	 * position then default condition is head node
+	 * 
+	 * @param head
+	 *            head of linked list in which user wants to insert loop
+	 */
+	public void insertLoopInLL(LinkListNode head) {
+		this.insertLoopInLL(head, 0);
+	}
+
 }
