@@ -153,7 +153,6 @@ public class LinkedListProblems extends LinkList {
 	public LinkListNode findLoopPoint(LinkListNode head) {
 		LinkListNode slowP;
 		LinkListNode fastP;
-		//HashSet<LinkListNode> loopNodes = new HashSet<LinkListNode>();
 		if (head == null) {
 			System.out.println("Linked List in not formd yet");
 			return null;
@@ -165,7 +164,6 @@ public class LinkedListProblems extends LinkList {
 		if (fastP == null) {
 			return fastP;
 		}
-
 		
 		while (!slowP.equals(fastP)) {
 			slowP = slowP.nextNode;
@@ -174,8 +172,5 @@ public class LinkedListProblems extends LinkList {
 
 		return slowP;
 	}
-	
-	
-	
 	
 }
