@@ -48,5 +48,29 @@ public class LinkedListProblems extends LinkList {
 	public void insertLoopInLL(LinkListNode head) {
 		this.insertLoopInLL(head, 0);
 	}
+	
+	/***
+	 * This method finds there is a loop in Linked list or not
+	 * 
+	 * @param head
+	 *            head of LL to check loop present or not
+	 * @return if loop present in LL return null. If not present return some
+	 *         nodes from loop where fastPointer == slowPointer
+	 */
+	public LinkListNode isLoop(LinkListNode head) {
+		LinkListNode slowP = head;
+		LinkListNode fastP = head;
+
+		while (fastP.nextNode != null) {
+			slowP = slowP.nextNode;
+			fastP = fastP.nextNode.nextNode;
+
+			if (slowP.equals(fastP)) {
+				return slowP;
+			}
+		}
+
+		return null;
+	}
 
 }
