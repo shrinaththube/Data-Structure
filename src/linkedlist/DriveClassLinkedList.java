@@ -3,7 +3,7 @@ package linkedlist;
 public class DriveClassLinkedList {
 
 	public static void main(String[] args){
-		int [] arr1 = {3,2,4,3,5,6,8,9,7};
+		int [] arr1 = {3,2,4,1,5,6,8,9,7};
 		LinkedListProblems list1 = new LinkedListProblems();
 		
 		//Create linked list
@@ -18,7 +18,7 @@ public class DriveClassLinkedList {
 		
 		
 		//inserting loop in Linked list
-		list1.insertLoopInLL(list1.headNode,4);
+		list1.insertLoopInLL(list1.headNode,5);
 		//checking loop is present or not
 		list1.isLoop();
 		//Print the start node of loop if present
