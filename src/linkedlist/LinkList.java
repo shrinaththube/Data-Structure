@@ -96,15 +96,20 @@ public class LinkList {
 		}
 	}
 
-	// Print the Linked list
+	// Method overloading of display method
 	public void displayLinkList() {
-		LinkListNode printNode = this.headNode;
-		while (printNode != null) {
-			System.out.print(printNode.value + " -> ");
-			printNode = printNode.nextNode;
-		}
-		System.out.print("null" + "\n");
+		this.displayLinkList(this.headNode);
 	}
+	
+	// Print the Linked list
+		public void displayLinkList(LinkListNode head) {
+			LinkListNode printNode = head;
+			while (printNode != null) {
+				System.out.print(printNode.value + " -> ");
+				printNode = printNode.nextNode;
+			}
+			System.out.print("null" + "\n");
+		}
 
 	// Bubble sorting of LinkList , time complexity O(n^2), space complexity
 	// O(1) int temp variable for swapping
