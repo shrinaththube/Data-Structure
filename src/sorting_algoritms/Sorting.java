@@ -14,59 +14,7 @@ import org.junit.rules.Stopwatch;
  */
 public class Sorting {
 
-	//static Stopwatch timer;
-	
-	public static void main(String args[]){
 		
-		Sorting obj = new Sorting();
-		
-		int array[] = obj.readFile();
-		int arrayForInsertionSort [] = obj.readFile(); 
-	//	int arrayForMergeSort [] = obj.readFile();
-		int arrayForMergeSort [] = {9,4,2,1,5};
-		int arrayForQuickSort [] = {9,4,2,1,5};
-		int output[] = new int[arrayForMergeSort.length];
-		
-		
-		//Unsorted array - sort it by bubble sorting
-		long startTime = System.nanoTime();
-		obj.modified_Bubble_sort(array);
-		long endTime = System.nanoTime();
-		long duration = endTime - startTime;
-	/*	obj.printArray(array,duration);
-		
-		//Sorted array to check modified bubble condition and compare the time requirement.
-		startTime = System.nanoTime();
-		obj.modified_Bubble_sort(array);
-		endTime = System.nanoTime();
-		duration = endTime - startTime;
-		obj.printArray(array,duration);
-				
-		
-		//Unsorted array - sort it by Insertion sorting
-		startTime = System.nanoTime();
-		obj.insertionSort(arrayForInsertionSort);
-		endTime = System.nanoTime();
-		duration = endTime - startTime;
-		obj.printArray(arrayForInsertionSort,duration);
-		*/
-		//Unsorted array - sort it by Merge sorting
-		startTime = System.nanoTime();
-		//obj.mergeSort(arrayForMergeSort,output,0,output.length-1);
-		obj.mergeSort(arrayForMergeSort);
-		endTime = System.nanoTime();
-		duration = endTime - startTime;
-		obj.printArray(arrayForMergeSort,duration);
-		
-		//Unsorted array - sort it by Merge sorting
-		startTime = System.nanoTime();
-		obj.quickSort(arrayForQuickSort,0,arrayForQuickSort.length-1);
-		endTime = System.nanoTime();
-		duration = endTime - startTime;
-		obj.printArray(arrayForMergeSort,duration);
-	}
-	
-	
 	public void modified_Bubble_sort(int [] array){
 		//Flag will check is their any swapping in first iteration of bubble sort
 		boolean flag = true;
@@ -237,7 +185,7 @@ public class Sorting {
 		        // The name of the file to open.
 		        //String fileName = "C:\\Users\\Shrinath\\Desktop\\temp.txt";
 		        
-				String fileName = "C:\\Users\\Shrinath\\Desktop\\tp\\hgkjflgkdjd.txt";
+				String fileName = "C:\\Users\\Shrinath\\Desktop\\tp\\Sorting\\hgkjflgkdjd.txt";
 		 
 		        // This will reference one line at a time
 		        String line = null;
